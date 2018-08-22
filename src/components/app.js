@@ -2,6 +2,7 @@ import React from 'react';
 
 import PokemonList from './pokemon/list.js';
 import PokemonDetail from './pokemon/detail.js';
+import RedditList from './reddit/reddit.js';
 import {fetchData} from '../lib/utils.js';
 
 import '../style/app.scss';
@@ -103,6 +104,7 @@ class App extends React.Component {
       <main className={this.state.loading ? 'loading' : null}>
         <PokemonList pokemon={this.state.pokemonList} pokemonLoader={this.pokemonDetails} searchMethod={this.pokemonSearch}/>
         <PokemonDetail pokemon={this.state.pokemon}/>
+        <RedditList />
       </main>
     );
   }
