@@ -1,5 +1,5 @@
 import React from 'react';
-
+// import superagent from 'superagent';
 import PokemonList from './pokemon/list.js';
 import PokemonDetail from './pokemon/detail.js';
 import RedditList from './reddit/reddit.js';
@@ -83,7 +83,8 @@ class App extends React.Component {
   }
 
   pokemonSearch(search) {
-    let url = `${pokemonAPI}/${search}`;
+    let url = `${pokemonAPI}${search}`;
+    console.log(url);
     return this.load(url)
       .then(pokemon =>
         this.setState( Object.assign(...this.state, {pokemon}) )

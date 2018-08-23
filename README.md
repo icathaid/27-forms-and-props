@@ -1,5 +1,9 @@
-![cf](http://i.imgur.com/7v5ASc8.png) 27: Forms and Props
-===
+#  Notes
+
+need to add 404 handling, right now searching for anything it can't find crashes the app
+
+ 
+
 
 ## Submission Instructions
 * Follow the instructions in the "Lab Instructions" documentation in the reference folder of the class repository 

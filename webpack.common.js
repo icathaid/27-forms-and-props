@@ -20,7 +20,7 @@ webpackConfig.output = {
 webpackConfig.plugins = [
   new HtmlWebpackPlugin({
     title: 'React App',
-    template: `${__dirname}/src/index.html`,
+    template: `${__dirname}/public/index.html`,
   }),
   // this makes webpack constants
   new DefinePlugin({
