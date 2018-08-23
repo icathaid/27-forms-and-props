@@ -84,7 +84,6 @@ class App extends React.Component {
 
   pokemonSearch(search) {
     let url = `${pokemonAPI}${search}`;
-    console.log(url);
     return this.load(url)
       .then(pokemon =>
         this.setState( Object.assign(...this.state, {pokemon}) )

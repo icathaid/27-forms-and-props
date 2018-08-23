@@ -6,7 +6,17 @@ import '../pokemon/pokemon.scss';
 export default class RedditList extends Component {
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {search:''};
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.searchMethod(this.state.search);
+    }
+    handleSearch(e) {
+        let search = e.target.value;
+        this.setState({search});
     }
     render(){
         
