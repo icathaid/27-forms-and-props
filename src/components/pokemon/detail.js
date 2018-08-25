@@ -13,10 +13,10 @@ export default class PokemonDetail extends React.Component {
 
       // Conditionally Render
       this.props.pokemon.name ?
-
+      
         <div className="pokemonDetail">
 
-          <h2>{this.props.pokemon.name}</h2>
+          <h2>{this.props.pokemon.name} stuff</h2>
           <img src={this.props.pokemon.sprites.front_shiny}/>
 
           <div>

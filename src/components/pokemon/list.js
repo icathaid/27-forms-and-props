@@ -19,7 +19,7 @@ export default class PokemonList extends React.Component {
     this.setState({search});
   }
 
-  render() {
+  render() {        
     return(
       <div className="pokemonList">
 

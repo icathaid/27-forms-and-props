@@ -8,6 +8,7 @@ import {fetchData} from '../lib/utils.js';
 import '../style/app.scss';
 
 const pokemonAPI = 'https://www.pokeapi.co/api/v2/pokemon/';
+const redditAPI = 'https://www.reddit.com/dev/api/';
 
 class App extends React.Component {
 
@@ -16,6 +17,7 @@ class App extends React.Component {
     this.state = {
       pokemon: {},
       pokemonList:[],
+      reddit: {},
       loading:false,
     };
     this.pokemonSearch = this.pokemonSearch.bind(this);
@@ -50,12 +52,6 @@ class App extends React.Component {
       const pokemon = await(this.load(url));
       this.setState( Object.assign(...this.state, {pokemon}) );
     }
-
-    async pokemonSearch(search) {
-      let url = `${pokemonAPI}/${search}`;
-      const pokemon = await(this.load(url));
-      this.setState( Object.assign(...this.state, {pokemon}) );
-    }
   */
 
   componentDidMount() {
@@ -84,7 +80,6 @@ class App extends React.Component {
 
   pokemonSearch(search) {
     let url = `${pokemonAPI}${search}`;
-    console.log(url);
     return this.load(url)
       .then(pokemon =>
         this.setState( Object.assign(...this.state, {pokemon}) )
@@ -99,13 +94,20 @@ class App extends React.Component {
         return data;
       });
   }
+  
+  async redditSearch() {
+    let subToSearch = 'r/bicycling/search/';
+    let url = `${redditAPI}${subToSearch}`;
+    const reddit = await(this.load(url));
+    this.setState( Object.assign(...this.state, {reddit}) );
+  }
 
   render() {
     return (
       <main className={this.state.loading ? 'loading' : null}>
         <PokemonList pokemon={this.state.pokemonList} pokemonLoader={this.pokemonDetails} searchMethod={this.pokemonSearch}/>
         <PokemonDetail pokemon={this.state.pokemon}/>
-        <RedditList />
+        <RedditList reddit={this.state.redditSearch}/>
       </main>
     );
   }
