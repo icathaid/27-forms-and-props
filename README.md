@@ -1,7 +1,9 @@
 #  Notes
 
 need to add 404 handling, right now searching for anything it can't find crashes the app
+  might be breaking at conditional rendering line in detail.js
 
+need help targeting reddit api (or another api) because i'm not sure what data to feed it or how to deal with what I'm getting back to build the function around.
  
 
 
