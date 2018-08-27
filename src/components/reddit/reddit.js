@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from "react";
 import superagent from "superagent";
-
 import {fetchData} from '../../lib/utils.js';
-
+const testAPI =  'https://www.baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1';
 
 // import './reddit.scss';
 import '../pokemon/pokemon.scss';
@@ -22,18 +21,15 @@ export default class RedditList extends Component {
         let redditSearch = e.target.value;
         this.setState({redditSearch});
     }
+    searchReddit(){
+        return fetchData(testAPI);
+      }
     render(){
         
         // return this.props.pokemon.length > 0 ? <p>got some</p> : <p>got none</p>
         return <div>
             <h1>reddit</h1>
-            <input
-                onChange={this.props.redditLoader}
-                type="radio"
-                id="1"
-                name="reddit"
-                value={reddit.url}
-            ></input>
+            
         </div>
         
     }
