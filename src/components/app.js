@@ -2,13 +2,14 @@ import React from 'react';
 // import superagent from 'superagent';
 import PokemonList from './pokemon/list.js';
 import PokemonDetail from './pokemon/detail.js';
-import RedditList from './reddit/reddit.js';
+// import RedditList from './reddit/reddit.js';
 import {fetchData} from '../lib/utils.js';
 
 import '../style/app.scss';
 
 const pokemonAPI = 'https://www.pokeapi.co/api/v2/pokemon/';
 const redditAPI = 'https://www.reddit.com/dev/api/';
+const testAPI =  'https://www.baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1';
 
 class App extends React.Component {
 
@@ -59,6 +60,10 @@ class App extends React.Component {
       .then(data =>
         this.setState( Object.assign(...this.state, data) )
       );
+    this.searchReddit()
+      .then(data => 
+        this.setState( Object.assign(...this.state, data) )
+      );
   }
 
   loadPokemonList() {
@@ -67,6 +72,10 @@ class App extends React.Component {
         let pokemonList = pokeData.results;
         return {pokemonList};
       });
+  }
+  
+  searchReddit(){
+    return this.load(testAPI)
   }
 
   pokemonDetails(e) {
@@ -95,19 +104,19 @@ class App extends React.Component {
       });
   }
   
-  async redditSearch() {
-    let subToSearch = 'r/bicycling/search/';
-    let url = `${redditAPI}${subToSearch}`;
-    const reddit = await(this.load(url));
-    this.setState( Object.assign(...this.state, {reddit}) );
-  }
+  // async redditSearch() {
+  //   let subToSearch = 'r/bicycling/search/';
+  //   let url = `${redditAPI}${subToSearch}`;
+  //   const reddit = await(this.load(url));
+  //   this.setState( Object.assign(...this.state, {reddit}) );
+  // }
 
   render() {
     return (
       <main className={this.state.loading ? 'loading' : null}>
         <PokemonList pokemon={this.state.pokemonList} pokemonLoader={this.pokemonDetails} searchMethod={this.pokemonSearch}/>
         <PokemonDetail pokemon={this.state.pokemon}/>
-        <RedditList reddit={this.state.redditSearch}/>
+        
       </main>
     );
   }
