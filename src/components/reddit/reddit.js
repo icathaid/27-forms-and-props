@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import superagent from "superagent";
 import {fetchData} from '../../lib/utils.js';
-const testAPI =  'https://www.baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1';
+const testAPI =  'https://www.reddit.com/r/bicycling/search/?q=wheel';
 
 // import './reddit.scss';
 import '../pokemon/pokemon.scss';
@@ -22,10 +22,17 @@ export default class RedditList extends Component {
         this.setState({redditSearch});
     }
     searchReddit(){
-        return fetchData(testAPI);
+        return superagent.get(testAPI)
+        .then(results => {
+            const testResults = results.body
+            console.log(testResults)
+        })
+        .catch(err => {
+            console.error(err)
+        })
       }
     render(){
-        
+        this.searchReddit();
         // return this.props.pokemon.length > 0 ? <p>got some</p> : <p>got none</p>
         return <div>
             <h1>reddit</h1>

@@ -9,7 +9,7 @@ import '../style/app.scss';
 
 const pokemonAPI = 'https://www.pokeapi.co/api/v2/pokemon/';
 const redditAPI = 'https://www.reddit.com/dev/api/';
-
+//  https://www.reddit.com/r/bicycling/search/?q=wheel;
 
 class App extends React.Component {
 
